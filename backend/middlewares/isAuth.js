@@ -20,6 +20,25 @@ export const isAuth = async (req, res, next) => {
         console.log(req.user);
         next();
     } catch (error) {
-        return res.status(500).json({ error: "An error occurred during authentication" });
+        return res
+            .status(500)
+            .json({ error: "An error occurred during authentication" });
+    }
+};
+
+export const isAdmin = async (req, res, next) => {
+    try {
+        if (req.user.role !== "admin") {
+            return res
+                .status(403)
+                .json({
+                    error: "You are not authorized to access this resource",
+                });
+        }
+        next();
+    } catch (error) {
+        return res
+            .status(500)
+            .json({ error: "An error occurred during authentication" });
     }
 };
