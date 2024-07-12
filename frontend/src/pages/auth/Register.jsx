@@ -9,7 +9,7 @@ const Register = () => {
                 <h2>Register</h2>
                 <form action="">
                     <label htmlFor="Name">Name</label>
-                    <input type="text" required  placeholder='name'/ >
+                    <input type="text" required placeholder='name' />
 
                     <label htmlFor="Email">Email</label>
                     <input type="email" required />
