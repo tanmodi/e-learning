@@ -1,21 +1,46 @@
-import React from 'react';
-import './auth.css';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import "./auth.css";
+import { Link, useNavigate } from "react-router-dom";
+import { UserData } from "../../context/UserContext";
 
 const Login = () => {
+    const navigate = useNavigate();
+    const { btnLoading, loginUser } = UserData();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        await loginUser(email, password, navigate);
+    };
+    
     return (
         <div className="auth-page">
             <div className="auth-form">
                 <h2>Login</h2>
-                <form action="">
+                <form onSubmit={submitHandler}>
                     <label htmlFor="Email"></label>
-                    <input type="email" required />
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
 
                     <label htmlFor="Password"></label>
-                    <input type="password" required />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
 
-                    <button className="common-btn" type="submit">
-                        Login
+                    <button
+                        disabled={btnLoading}
+                        className="common-btn"
+                        type="submit"
+                    >
+                        {btnLoading ? "Loading..." : "Login"}
                     </button>
                 </form>
 
