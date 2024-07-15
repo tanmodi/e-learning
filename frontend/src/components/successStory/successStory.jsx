@@ -35,6 +35,34 @@ const successStory = () => {
                 "I've learned more here than in any other place. The interactive lessons and quizzes make learning enjoyable.",
             image: 'https://th.bing.com/th/id/OIP.GKAiW3oc2TWXVEeZAzrWOAHaJF?w=135&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7',
         },
+        {
+            id: 5,
+            name: 'Alex Johnson',
+            position: 'Student',
+            message: 'The e-learning platform has transformed my learning experience. The content is comprehensive and the support is excellent.',
+            image: 'https://th.bing.com/th?q=Current+Bachelor&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247',
+        },
+        {
+            id: 6,
+            name: 'Emily Wilson',
+            position: 'Student',
+            message: 'I am so grateful for this platform. The courses are well-structured and the instructors are knowledgeable.',
+            image: 'https://th.bing.com/th?q=Current+Bachelor&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247',
+        },
+        {
+            id: 7,
+            name: 'Michael Brown',
+            position: 'Student',
+            message: 'I highly recommend this e-learning platform. The interactive lessons and practical exercises have helped me gain valuable skills.',
+            image: 'https://th.bing.com/th?q=Current+Bachelor&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247',
+        },
+        {
+            id: 8,
+            name: 'Sophia Davis',
+            position: 'Student',
+            message: 'I have learned so much from this platform. The instructors are engaging and the course content is up-to-date.',
+            image: 'https://th.bing.com/th?q=Current+Bachelor&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247',
+        },
     ];
     return (
         <section className="successStory">

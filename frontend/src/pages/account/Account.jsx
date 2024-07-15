@@ -2,16 +2,20 @@ import React from 'react'
 import { MdDashboard } from "react-icons/md";
 import './account.css'
 
-const Account = () => {
+const Account = ( {user }) => {
   return (
     <div className='profile'>
         <h2>My profile</h2>
         <div className="profile-info">
             <p>
-                <strong>Name - Tanmay</strong>
+                <strong><span>Name - </span>{user.name}</strong>
             </p>
             <p>
-                <strong>Email - tanmay@email.com</strong>
+                <strong><span>Email - </span>{user.email}</strong>
+
+            </p>
+            <p>
+                <strong><span>Role - </span>{user.role}</strong>
             </p>
 
             <button className='common-btn'>

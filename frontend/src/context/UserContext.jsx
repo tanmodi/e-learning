@@ -1,11 +1,9 @@
-import { createContext, useContext,useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { server } from "../main";
 import toast, { Toaster } from "react-hot-toast";
 
 const UserContext = createContext();
-
-
 
 export const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState([]);
@@ -14,12 +12,11 @@ export const UserContextProvider = ({ children }) => {
     const [btnLoading, setBtnLoading] = useState(false);
     const [loading, setLoading] = useState(true);
 
-
     // async function loginUser( email, password,navigate) {
     //     setBtnLoading(true);
     //     try {
     //         const { data } = await axios.post(`${server}/api/user/login`,{email,password});
-            
+
     //         toast.success(data.message);
     //         console.log(data);
     //         localStorage.setItem("token", data.token);
@@ -35,13 +32,16 @@ export const UserContextProvider = ({ children }) => {
     //         // Check if error.response exists before trying to access error.response.data.message
     //         toast.error(error.response.data.message);
     //     }
-        
+
     // }
     async function loginUser(email, password, navigate) {
         setBtnLoading(true);
         try {
-            const { data } = await axios.post(`${server}/api/user/login`, { email, password });
-            
+            const { data } = await axios.post(`${server}/api/user/login`, {
+                email,
+                password,
+            });
+
             toast.success(data.message);
             console.log(data);
             localStorage.setItem("token", data.token);
@@ -61,13 +61,54 @@ export const UserContextProvider = ({ children }) => {
             }
         }
     }
-    
+
     return (
-        <UserContext.Provider value={{ user, setUser, setIsAuth, isAuth, loginUser, btnLoading, userName, setUserName }}>
+        <UserContext.Provider
+            value={{
+                user,
+                setUser,
+                setIsAuth,
+                isAuth,
+                loginUser,
+                btnLoading,
+                userName,
+                setUserName,
+            }}
+        >
             {children}
-            <Toaster/>
+            <Toaster />
         </UserContext.Provider>
     );
 };
 
 export const UserData = () => useContext(UserContext);
+
+export const userVerifyLogin = async () => {
+    const returnData = {
+        isAuth: false,
+        user: [],
+        userName: "",
+    };
+    try {
+        const token = localStorage.getItem("token");
+        if (token) {
+            const { data } = await axios.get(`${server}/api/user/me`, {
+                headers: {
+                    token: `${token}`,
+                },
+            });
+
+            if (!data.error) {
+                returnData.isAuth = true;
+                returnData.user = data.currentUser;
+                returnData.userName = data.currentUser.name;
+            }
+            else {
+                localStorage.removeItem("token");
+            }
+        }
+        return returnData;
+    } catch (error) {
+        return returnData;
+    }
+};

@@ -22,6 +22,9 @@
   
         strong {
           color: #8a4baf;
+          span {
+            color: #020202;
+          }
         }
       }
     }
